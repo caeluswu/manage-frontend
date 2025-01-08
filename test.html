@@ -1,0 +1,73 @@
+
+<template>
+    <div class="home">
+      <input type="file" name="file" id="fileInput">
+      <button onclick="goPreview()">点击预览word文件</button>
+      <div id="docWrap">
+        <!-- 预览文件的地方（用于渲染） -->
+        <div ref="filebox"></div>
+      </div>
+    </div>
+  </template>
+  <script>
+  // import axios from 'axios';
+  // 引入docx-preview插件
+  import { renderAsync } from 'docx-preview';
+  let docx = import.meta.glob('docx-preview');
+  export default {
+  
+    mounted() {
+      console.log('使用插件的renderAsync方法来渲染', docx) //
+      const fileInput = document.getElementById('fileInput')
+      const filebox = document.getElementById('docWrap')
+  
+      const goPreview = () => {
+        const file = fileInput.files[0]
+        console.log(file);
+        const reader = new FileReader()
+        reader.readAsArrayBuffer(file)
+        reader.onload = (e) => {
+          const data = e.target.result
+          console.log(data);
+          /**
+          * 第一个参数： data为文件流，Blob | ArrayBuffer | Uint8Array 格式
+          * 第二个参数： 渲染到页面的dom元素
+          * 第三个参数： 渲染word文档的样式的元素，如果为null，则设置到第二个参数的DOM上
+          * 第四个参数： 配置对象
+          */
+          renderAsync(data, filebox, null, {
+            className: 'text-docx', //class name/prefix for default and document style classes
+            inWrapper: true, //enables rendering of wrapper around document content
+            ignoreWidth: false, //disables rendering width of page
+            ignoreHeight: false, //disables rendering height of page
+            ignoreFonts: false, //disables fonts rendering
+            breakPages: true, //enables page breaking on page breaks
+            ignoreLastRenderedPageBreak: true, //disables page breaking on lastRenderedPageBreak elements
+            experimental: true, //enables experimental features (tab stops calculation)
+            trimXmlDeclaration: true, //if true, xml declaration will be removed from xml documents before parsing
+            useBase64URL: false, //if true, images, fonts, etc. will be converted to base 64 URL, otherwise URL.createObjectURL is used
+            useMathMLPolyfill: true, //includes MathML polyfills for chrome, edge, etc.
+            debug: false //enables additional logging
+          }) // 渲染到页面
+        }
+      }
+      fileInput.addEventListener('change', goPreview)
+    },
+  }
+  
+  </script>
+  <style scoped>
+  .home {
+    height: 100%;
+    overflow: auto;
+  }
+  
+  /* .docWrap {
+    width: 900px;
+    overflow: auto;
+  } */
+  
+  .text-docx-wrapper {
+    background: #fff !important;
+  }
+  </style>

@@ -1,0 +1,56 @@
+<mxfile host="65bd71144e">
+    <diagram id="CqenUEusEvIRXyD3-XYq" name="Page-1">
+        <mxGraphModel dx="906" dy="1767" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="10" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="3" target="7">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="160" y="180"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="" style="edgeStyle=none;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="3" target="12">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="edgeStyle=none;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="3" target="15">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="" style="edgeStyle=none;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="3" target="17">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="业务管理" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="150" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="模板管理" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="260" y="30" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="机组管理" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="260" y="160" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="场站管理" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="260" y="280" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="校核审批" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="260" y="390" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="模板：&lt;br&gt;电磁机组，机电机组，每个又有三种类型，模板管理是管理模板的版本号和类型，每个模板是一个文件夹压缩包，对应不同型号的不同机子，一个压缩包是一个机型吧。&lt;br&gt;属性：&lt;br&gt;名称、描述、类型、其他文件信息&lt;br&gt;类型：电磁/机电+机组/场站&lt;br&gt;分类型创建吧" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="175" y="-280" width="250" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" style="edgeStyle=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="22" target="21">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="机组：&lt;br&gt;一组机器，包含多种类型，一般以机组为单位生成报告，一个机组使用一个模板生成报告这种？" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="530" y="-280" width="270" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="场站：&lt;br&gt;一个工厂，包含多个机组" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="470" y="-590" width="280" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="机组维护：&lt;br&gt;属性：&lt;br&gt;机组类型，风机型号，厂家，型号，机组容量，&lt;br&gt;状态：&lt;br&gt;启用状态，机电状态，电磁状态，" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="530" y="-50" width="270" height="190" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
