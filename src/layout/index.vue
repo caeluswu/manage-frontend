@@ -18,12 +18,14 @@
       <!-- 内容展示区域 -->
       <div class="layout_main">
         <!-- 路由组件出口的位置 -->
-        <router-view v-slot="{ Component }">
-          <transition name="fade">
-            <!-- 渲染layout一级路由组件的子路由 -->
-            <component :is="Component" v-if="flag" />
-          </transition>
-        </router-view>
+        <div class="main_card">
+          <router-view v-slot="{ Component }">
+            <transition name="fade">
+              <!-- 渲染layout一级路由组件的子路由 -->
+              <component :is="Component" v-if="flag" />
+            </transition>
+          </router-view>
+        </div>
       </div>
     </div>
   </div>
@@ -108,7 +110,7 @@ $base-navbar-height: 65px;
     width: $base-menu-width;
     background: $base-menu-background;
     transition: all 0.3s;
-    box-shadow: 2px 0px 4px 0px rgba(34,90,80,0.05);
+    box-shadow: 2px 0px 4px 0px rgba(34, 90, 80, 0.05);
 
     .scrollbar {
       width: 100%;
@@ -130,6 +132,14 @@ $base-navbar-height: 65px;
     height: calc(100vh - $base-navbar-height);
     overflow: auto;
     transition: all 0.3s;
+
+    .main_card {
+      background-color: white;
+      height: calc(100% - 2 * #{$mainMargin});
+      width: calc(100% - 2 * #{$mainMargin});
+      // padding: -2rem;
+      margin: $mainMargin;
+    }
 
   }
 }

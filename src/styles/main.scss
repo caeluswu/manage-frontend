@@ -1,3 +1,41 @@
 @import url('./reset.scss');
 
 
+.el-button--primary{
+    --el-button-text-color: #{$buttonPrimaryTextColor};
+    --el-button-bg-color: #{$buttonPrimaryColor};
+    --el-button-border-color: #{$buttonPrimaryColor};
+    --el-button-hover-text-color: #{$buttonPrimaryHoverTextColor};
+    --el-button-hover-bg-color: #{$buttonPrimaryHoverColor};
+    --el-button-hover-border-color: #{$buttonPrimaryHoverColor};
+    --el-button-active-text-color: #{$buttonPrimaryPressTextColor};
+    --el-button-active-bg-color: #{$buttonPrimaryPressColor};
+    --el-button-active-border-color: #{$buttonPrimaryPressColor};
+  }
+
+  .el-button--primary.is-link{
+    --el-button-text-color: #{$buttonPrimaryColor};
+    --el-button-hover-link-text-color: #{$buttonPrimaryHoverColor};
+    --el-button-active-color: #{$buttonPrimaryPressColor};
+  }
+  .el-button--danger.is-plain{
+    --el-button-text-color: #{$buttonDangerTextColor};
+    --el-button-bg-color: #{$buttonDangerColor};
+    --el-button-border-color: #{$buttonDangerColor};
+    --el-button-hover-text-color: #{$buttonDangerHoverTextColor};
+    --el-button-hover-bg-color: #{$buttonDangerHoverColor};
+    --el-button-hover-border-color: #{$buttonDangerHoverColor};
+    --el-button-active-text-color: #{$buttonDangerPressTextColor};
+    --el-button-active-bg-color: #{$buttonDangerPressColor};
+    --el-button-active-border-color: #{$buttonDangerPressColor};
+  }
+  .el-button--danger.is-link{
+    --el-button-text-color: #{$buttonDangerTextColor};
+    --el-button-hover-link-text-color: #{$buttonDangerHoverTextColor};
+    --el-button-active-color: #{$buttonDangerPressTextColor}
+  }
+
+  .el-table{
+    --el-table-header-bg-color: #{$tableHeaderColor};
+    --el-table-header-text-color: #{$tableHeaderTextColor};
+  }

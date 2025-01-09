@@ -1,7 +1,29 @@
 // 定义全局变量
-$mainColor: #179089 ;
-$menuTextColor: #545963 ;
-$menuActiveTextColor: #00A9A0 ;
+$mainColor: #179089;
+$backgroundColor: #f6f6f6;
+$mainMargin: 2rem;
+$textColor: #545963;
+
+
+$menuTextColor: $textColor;
+$menuActiveTextColor: #00a9a0;
 $mainShallowColor: #e3f2f1;
 
-$backgroundColor: #f6f6f6;
+
+$buttonPrimaryColor: #00a9a0;
+$buttonPrimaryTextColor: white;
+$buttonPrimaryHoverColor: #00b4ab;
+$buttonPrimaryHoverTextColor: white;
+$buttonPrimaryPressColor: #00968e;
+$buttonPrimaryPressTextColor: white;
+
+$buttonDangerColor: #ffebeb;
+$buttonDangerTextColor: #d60000;
+$buttonDangerHoverColor: #fff1f1;
+$buttonDangerHoverTextColor: #ff1616;
+$buttonDangerPressColor: #ffdede;
+$buttonDangerPressTextColor: #d60000;
+
+
+$tableHeaderColor: #eef1f1;
+$tableHeaderTextColor: $textColor

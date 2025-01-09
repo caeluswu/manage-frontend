@@ -27,3 +27,12 @@ export interface userInfoReponseData extends ResponseData {
     avatar: string
   }
 }
+export interface userInfo {
+  buttonList: string[]
+  deptName: string
+  licenseDays: number
+  tokenKey: string
+  tokenValue: string
+  userId: number
+  userName: string
+}
