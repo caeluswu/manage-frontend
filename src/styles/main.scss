@@ -32,7 +32,7 @@
   .el-button--danger.is-link{
     --el-button-text-color: #{$buttonDangerTextColor};
     --el-button-hover-link-text-color: #{$buttonDangerHoverTextColor};
-    --el-button-active-color: #{$buttonDangerPressTextColor}
+    --el-button-active-color: #{$buttonDangerPressTextColor};
   }
 
   .el-table{
