@@ -27,6 +27,9 @@
               show-password
             ></el-input>
           </el-form-item>
+          <el-form-item prop="code">
+            <el-input type="text" v-model="loginForm.code"></el-input>
+            </el-form-item>
           <el-form-item>
             <el-button
               :loading="loading"
@@ -62,7 +65,10 @@ let $route = useRoute()
 //定义变量控制按钮加载效果
 let loading = ref(false)
 //收集账号与密码的数据
-let loginForm = reactive({ username: '', password: '' })
+let loginForm = reactive({ username: '', 
+password: '',
+code: '',
+uuid: '' })
 
 // console.log('hello');
 

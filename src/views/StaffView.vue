@@ -4,7 +4,8 @@
       <el-button type="primary" @click="newStaff">新建</el-button>
       <el-button type="danger" plain style="margin-left: 1rem;">停用</el-button>
       <div class="spacer"></div>
-      <el-select style="margin-right:0.4rem;width: 162px;flex-shrink: 0;" :placeholder="search_attr" v-model="search_attr">
+      <el-select style="margin-right:0.4rem;width: 162px;flex-shrink: 0;" :placeholder="search_attr"
+        v-model="search_attr">
         <el-option v-for="item in props" :key="item.value" :label="item.label" :value="item.value"></el-option>
       </el-select>
       <el-input v-model="search" style="margin-right:1rem;width: 260px; flex-shrink: 0;" placeholder="请输入名称"
@@ -19,7 +20,8 @@
       <el-table-column prop="email" label="邮箱" />
       <el-table-column prop="create_time" label="创建时间" />
       <el-table-column prop="login_time" label="上次登录时间" />
-      <el-table-column prop="status" label="状态" :formatter="(row:any, column:any, cellValue:any, index:any) => {return cellValue ? '启用' : '禁用' }" />
+      <el-table-column prop="status" label="状态"
+        :formatter="(row: any, column: any, cellValue: any, index: any) => { return cellValue ? '启用' : '禁用' }" />
       <el-table-column fixed="right" label="操作" min-width="120">
         <template #default>
           <el-button link type="primary" size="small" @click="modifyForm">编辑</el-button>
@@ -28,69 +30,63 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-dialog v-model="showStaffDialog" class="create_staff" :show-close="false">
-      <template #header="{ close, titleId, titleClass }">
-        <div class="staff_header">
-          <h4 :id="titleId" :class="titleClass">{{ createStaffForm.from == 'new' ? '创建' : '编辑' }}用户</h4>
-          <el-icon class="el-icon--left" @click="close">
-            <CircleCloseFilled />
-          </el-icon>
-        </div>
-      </template>
+    <Dialog 
+      :show="showStaffDialog" 
+      class="create staff" 
+      :title="createStaffForm.from == 'new' ? '创建用户' : '编辑用户'"
+      @onCancel="showStaffDialog = false" 
+      @onConfirm="checkForm"
+      >
       <el-form :model="createStaffForm" label-position="left" :label-width="'80px'" class="staff_form">
         <div class="basic_info">
           <h3>基本信息</h3>
           <div class="basic_info_items">
             <el-form-item label="登陆名称">
-              <el-input v-model="createStaffForm.username" autocomplete="off"></el-input>
+              <el-input v-model="createStaffForm.username" autocomplete="off" placeholder="请输入内容"></el-input>
             </el-form-item>
             <el-form-item label="姓名">
-              <el-input v-model="createStaffForm.name" autocomplete="off"></el-input>
+              <el-input v-model="createStaffForm.name" autocomplete="off" placeholder="请输入内容"></el-input>
             </el-form-item>
             <el-form-item label="密码">
-              <el-input v-model="createStaffForm.password" autocomplete="off"></el-input>
+              <el-input v-model="createStaffForm.password" autocomplete="off" placeholder="请输入内容"
+                show-password></el-input>
             </el-form-item>
             <el-form-item label="确认密码">
-              <el-input v-model="createStaffForm.repassword" autocomplete="off"></el-input>
+              <el-input v-model="createStaffForm.repassword" autocomplete="off" placeholder="请输入内容"
+                show-password></el-input>
             </el-form-item>
             <el-form-item label="邮箱">
-              <el-input v-model="createStaffForm.email" autocomplete="off"></el-input>
+              <el-input v-model="createStaffForm.email" autocomplete="off" placeholder="请输入内容"></el-input>
             </el-form-item>
             <el-form-item label="联系方式">
-              <el-input v-model="createStaffForm.contact" autocomplete="off"></el-input>
+              <el-input v-model="createStaffForm.contact" autocomplete="off" placeholder="请输入内容"></el-input>
             </el-form-item>
             <el-form-item label="部门">
-              <el-input v-model="createStaffForm.department" autocomplete="off"></el-input>
+              <el-input v-model="createStaffForm.department" autocomplete="off" placeholder="请输入内容"></el-input>
             </el-form-item>
           </div>
         </div>
         <div class="permission">
           <h3>权限管理</h3>
           <el-table :data="permission" @select="handleSelect" @selectAll="handleSelectAll" stripe ref="permissionTable">
-            <el-table-column type="selection"  />
+            <el-table-column type="selection" />
             <el-table-column prop="permission" label="权限名称" />
           </el-table>
         </div>
         <div class="modify" v-show="createStaffForm.from == 'modify'">
           <h3>修改密码</h3>
           <el-form-item label="旧密码">
-              <el-input v-model="createStaffForm.username" autocomplete="off"></el-input>
-            </el-form-item>
+            <el-input v-model="createStaffForm.username" autocomplete="off" show-password></el-input>
+          </el-form-item>
           <el-form-item label="新密码">
-              <el-input v-model="createStaffForm.username" autocomplete="off"></el-input>
-            </el-form-item>
-            <el-form-item label="确认密码">
-              <el-input v-model="createStaffForm.username" autocomplete="off"></el-input>
-            </el-form-item>
+            <el-input v-model="createStaffForm.username" autocomplete="off" show-password></el-input>
+          </el-form-item>
+          <el-form-item label="确认密码">
+            <el-input v-model="createStaffForm.username" autocomplete="off" show-password></el-input>
+          </el-form-item>
         </div>
       </el-form>
-      <template #footer>
-        <span class="dialog-footer">
-          <el-button @click="showStaffDialog = false">取消</el-button>
-          <el-button type="primary" @click="checkForm">确认</el-button>
-        </span>
-      </template>
-    </el-dialog>
+    </Dialog>
   </div>
 </template>
 
@@ -100,6 +96,7 @@ import { ref, reactive } from 'vue'
 import type { Reactive } from 'vue'
 import { ElNotification } from 'element-plus'
 import type { TableInstance } from 'element-plus'
+import Dialog from '@/components/Dialog.vue'
 
 
 interface createStaff {
@@ -178,15 +175,15 @@ const permissionValue = {
   '审核': 2,
   '管理员': 4,
 }
-const handleSelect = (selection:any, row: any) => {
+const handleSelect = (selection: any, row: any) => {
   createStaffForm.permission = 0
-  selection.forEach((item: {permission:'上传' | '审核' | '管理员'}) => {
+  selection.forEach((item: { permission: '上传' | '审核' | '管理员' }) => {
     createStaffForm.permission += permissionValue[item.permission]
   })
 }
 const handleSelectAll = (selection: any) => {
   createStaffForm.permission = 0
-  selection.forEach((item: {permission:'上传' | '审核' | '管理员'}) => {
+  selection.forEach((item: { permission: '上传' | '审核' | '管理员' }) => {
     createStaffForm.permission += permissionValue[item.permission]
   })
 }
@@ -199,9 +196,9 @@ const newStaff = () => {
   createStaffForm.contact = ''
   createStaffForm.department = ''
   createStaffForm.permission = 0
-  createStaffForm.from='new'
+  createStaffForm.from = 'new'
   permissionTable.value?.clearSelection()
-  
+
   showStaffDialog.value = true
 }
 const modifyForm = (staffInfo: any) => {
@@ -209,22 +206,22 @@ const modifyForm = (staffInfo: any) => {
   showStaffDialog.value = true
 }
 const checkForm = () => {
-  if(createStaffForm.username==='' || 
-    createStaffForm.password==='' ||
-    createStaffForm.repassword==='' ||
-    createStaffForm.name==='' ||
-    createStaffForm.email==='' ||
-    createStaffForm.contact==='' ||
-    createStaffForm.department===''||
-    createStaffForm.permission===0
-  ){
+  if (createStaffForm.username === '' ||
+    createStaffForm.password === '' ||
+    createStaffForm.repassword === '' ||
+    createStaffForm.name === '' ||
+    createStaffForm.email === '' ||
+    createStaffForm.contact === '' ||
+    createStaffForm.department === '' ||
+    createStaffForm.permission === 0
+  ) {
     ElNotification({
       type: 'warning',
       message: '用户信息不完整',
     })
     return
   }
-  if(createStaffForm.password != createStaffForm.repassword){
+  if (createStaffForm.password != createStaffForm.repassword) {
     ElNotification({
       type: 'warning',
       message: '密码不一致',
@@ -234,8 +231,8 @@ const checkForm = () => {
     return
   }
   // TODO: 对接后端
-  console.log('createStaffForm:',createStaffForm);
-  
+  console.log('createStaffForm:', createStaffForm);
+
   showStaffDialog.value = false
 }
 
@@ -260,9 +257,6 @@ const data = [
   }
 ]
 
-
-
-
 </script>
 
 <style lang="scss" scoped>
@@ -279,38 +273,34 @@ const data = [
     }
   }
 
-  .create_staff {
-
-    // padding: 1rem;
-    .staff_header {
-      // background-color: $mainColor;
-      // outline: solid $mainColor 2rem;
-      margin-bottom: 1rem;
-      position: relative;
-      z-index: 20;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-
-      h4 {
-        color: white;
-        padding-left: 1rem;
-      }
-    }
-
-    .staff_header::before {
-      content: '';
-      position: absolute;
-      top: -1rem;
-      left: -1rem;
-      bottom: -1rem;
-      right: -1rem;
-      background-color: $mainColor;
-      border-top-left-radius: 4px;
-      border-top-right-radius: 4px;
-      z-index: -1;
-    }
+  .new_department {
+    // .staff_header {
+    //   // background-color: $mainColor;
+    //   // outline: solid $mainColor 2rem;
+    //   margin-bottom: 1rem;
+    //   position: relative;
+    //   z-index: 20;
+    //   display: flex;
+    //   justify-content: space-between;
+    //   align-items: center;
+    //   color: white;
+    //   h4 {
+    //     color: white;
+    //     padding-left: 1rem;
+    //   }
+    // }
+    // .staff_header::before {
+    //   content: '';
+    //   position: absolute;
+    //   top: -1rem;
+    //   left: -1rem;
+    //   bottom: -1rem;
+    //   right: -1rem;
+    //   background-color: $mainColor;
+    //   border-top-left-radius: 4px;
+    //   border-top-right-radius: 4px;
+    //   z-index: -1;
+    // }
   }
 
   .staff_form {
@@ -319,6 +309,7 @@ const data = [
     grid-template-areas: 'a a' 'b c';
     grid-template-columns: 1fr 1fr;
     grid-gap: 2rem;
+    font-size: 12px;
 
     .basic_info {
       grid-area: a;
@@ -328,6 +319,8 @@ const data = [
       border-left: solid $mainColor 4px;
       padding-left: 0.25rem;
       margin-bottom: 1rem;
+      font-weight: bold;
+      font-size: 16px;
     }
 
     .basic_info_items {
@@ -341,8 +334,11 @@ const data = [
       }
     }
 
+    .modify {
+      .el-form-item {
+        margin-bottom: 1.5rem;
+      }
+    }
   }
-
-
 }
 </style>

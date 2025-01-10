@@ -5,8 +5,7 @@ import { reqLogin, reqUserInfo, reqLogout } from "@/api/user";
 import type {
   loginFormData,
   loginResponseData,
-  userInfoReponseData,
-} from "@/api/user/type";
+} from "@/api/auth/type";
 
 import type { RouteRecordRaw } from "vue-router";
 //引入操作本地存储的工具方法
