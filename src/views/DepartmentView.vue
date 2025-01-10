@@ -19,9 +19,9 @@
       <el-table-column prop="description" label="部门描述" />
       <el-table-column fixed="right" label="操作" min-width="120">
         <template #default>
-          <el-button link type="primary" size="small" @click="editDepartment('')">编辑</el-button>
+          <el-button link type="primary" size="small" @click="editDepartment('编辑部门')">编辑</el-button>
           <el-button link type="primary" size="small" @click="editStaff">调整人员</el-button>
-          <el-button link type="primary" size="small" @click="modifyDepartment">新建子部门</el-button>
+          <el-button link type="primary" size="small" @click="editDepartment('新建子部门')">新建子部门</el-button>
           <el-button link type="danger" size="small">停用</el-button>
         </template>
       </el-table-column>
@@ -43,24 +43,6 @@
         </el-form-item>
       </el-form>
     </Dialog>
-
-    <!-- <el-dialog v-model="showNewDepartmentDialog" class="new_department" :show-close="false" width='522'>
-      <template #header="{ close, titleId, titleClass }">
-        <div class="dialog_header">
-          <h4 :id="titleId" :class="titleClass">新建部门</h4>
-          <el-icon class="el-icon--left" @click="close">
-            <CircleCloseFilled />
-          </el-icon>
-        </div>
-      </template>
-
-      <template #footer>
-        <span class="dialog-footer">
-          <el-button @click="showStaffDialog = false">取消</el-button>
-          <el-button type="primary" @click="checkForm">确认</el-button>
-        </span>
-      </template>
-    </el-dialog> -->
     <Dialog :show="showStaffEditDialog"
         :title="`人员调整 - ${department}`" 
         width="80%" 
@@ -68,22 +50,6 @@
         @onConfirm="showStaffEditDialog = false">
       <StaffView :department="department"></StaffView>
     </Dialog>
-    <!-- <el-dialog :model="showStaffEditDialog" width="70%">
-      <template #header="{ close, titleId, titleClass }">
-        <div class="dialog_header">
-          <h4 :id="titleId" :class="titleClass">人员调整 - {{ department }}</h4>
-          <el-icon class="el-icon--left" @click="close">
-            <CircleCloseFilled />
-          </el-icon>
-        </div>
-      </template>
-      <template #footer>
-        <span class="dialog-footer">
-          <el-button @click="showStaffDialog = false">取消</el-button>
-          <el-button type="primary" @click="checkForm">确认</el-button>
-        </span>
-      </template>
-    </el-dialog> -->
   </div>
 </template>
 
